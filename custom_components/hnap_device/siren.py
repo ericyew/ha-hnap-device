@@ -17,7 +17,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
 # USA.
 
-
 """Siren sensor for HNAP device integration."""
 
 from typing import Optional
@@ -42,7 +41,6 @@ from .const import DOMAIN, PLATFORM_SIREN
 from .hnap_entity import HNapEntity
 
 PLATFORM = PLATFORM_SIREN
-
 
 class HNAPSiren(HNapEntity, SirenEntity):
     def __init__(self, *args, **kwargs):
@@ -71,7 +69,7 @@ class HNAPSiren(HNapEntity, SirenEntity):
         else:
             self.hnap_update_success()
 
-    def turn_on(self, volume_level=1, duration=15, tone="police") -> None:
+    def turn_on(self, volume_level=1, duration=15, tone="door chime") -> None:
         self.device.play(
             sound=hnap.SirenSound.fromstring(tone),
             volume=int(volume_level * 100),
